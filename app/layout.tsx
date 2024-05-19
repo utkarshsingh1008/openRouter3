@@ -4,11 +4,12 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
-import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import Sidebar from "@/components/sidebar";
-
+import axios from "axios";
+import AuthContextProvider from "./context/AuthContext"
 export const metadata: Metadata = {
+	
 	title: {
 		default: siteConfig.name,
 		template: `%s - ${siteConfig.name}`,
@@ -31,6 +32,10 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	
+		// Axios interceptor to add a custom header to all requests
+		
+
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head />
@@ -39,7 +44,7 @@ export default function RootLayout({
 					"min-h-screen bg-background font-sans antialiased",
 					fontSans.variable
 				)}
-			>
+			>   <AuthContextProvider>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
 					<div className="relative flex flex-col h-screen">
 						<Navbar />
@@ -51,7 +56,7 @@ export default function RootLayout({
 						
 						</footer>
 					</div>
-				</Providers>
+				</Providers></AuthContextProvider>
 			</body>
 		</html>
 	);
