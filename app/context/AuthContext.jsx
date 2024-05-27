@@ -1,27 +1,30 @@
 'use client'
-import { useContext, useState } from "react";
-import { createContext } from "react";
+import { useContext, useState, createContext } from "react";
+import Cookies from 'js-cookie';
+
 const authContext = createContext();
 
-
 const AuthContextProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(Cookies.get('token') || null);
 
-  const onTokenHandeler = (data) => {
+  const onTokenHandler = (data) => {
     setToken(data);
     sessionStorage.setItem('token',data);
+    Cookies.set('token', data);
   };
+
   return (
     <authContext.Provider
       value={{
-        onTokenHandeler,
-        token: token,
-        setToken: setToken,
+        onTokenHandler,
+        token,
+        setToken,
       }}
     >
       {children}
     </authContext.Provider>
   );
 };
+
 export default AuthContextProvider;
 export const useAuthContext = () => useContext(authContext);

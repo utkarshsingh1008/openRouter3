@@ -1,40 +1,45 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import { Card, CardHeader, CardBody, Divider, Button } from "@nextui-org/react";
 import { FaGoogle } from "react-icons/fa";
 import { IoLogoOctocat } from "react-icons/io";
 import { useAuthContext } from "../context/AuthContext";
-import axios from "axios"
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 interface FormData {
   [key: string]: string;
 }
 
 export default function Login() {
-  const {onTokenHandeler} = useAuthContext()
+  const { onTokenHandler } = useAuthContext();
   const [showFirstCard, setShowFirstCard] = useState(true);
   const [data, setData] = useState<FormData>({
-    appType:'music',
-    name:'kknkn',
+    appType: "music",
+    name: "kknkn",
     email: "",
     password: "",
   });
-   const [token,setToken] = useState<number>();
-
-  const submitLogin = ()=>{
-    axios.post('https://academics.newtonschool.co/api/v1/user/login',data,{ headers:{
-      'projectid': 'ue7vjvd5u6er'
-  }
-    }).then((responce)=>{
-      console.log(responce.data.data)
-      onTokenHandeler(responce.data.token)
-      
-      // navigate("/")
-    }).catch((error)=>{
-      console.log(error);
-    })
-  }
+  const [token, setToken] = useState<number>();
+  const router = useRouter();
+  const submitLogin = () => {
+    axios
+      .post("https://academics.newtonschool.co/api/v1/user/login", data, {
+        headers: {
+          projectid: "ue7vjvd5u6er",
+        },
+      })
+      .then((responce) => {
+        console.log(responce.data.data);
+        onTokenHandler(responce.data.token);
+        router.push("/docs");
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setData({
@@ -43,27 +48,30 @@ export default function Login() {
     });
   };
 
-  const onsubmitHandlerLogin = (event: React.FormEvent<HTMLFormElement>)=>{
+  const onsubmitHandlerLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     submitLogin();
-  }
+  };
   const onsubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    axios.post("https://academics.newtonschool.co/api/v1/user/signup",data,{
-      headers:{
-        'projectid': 'ue7vjvd5u6er'
-    }
-    }).then((response)=>{
-      console.log(response);
-      //  navigate("/login")
-    }).catch((error)=>{
-      console.log(error);
-      if(error.response  && error.response.data.message){
-        
-      } else{
-        console.log("error")
-      }
-    })
+    axios
+      .post("https://academics.newtonschool.co/api/v1/user/signup", data, {
+        headers: {
+          projectid: "ue7vjvd5u6er",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+
+        //  navigate("/login")
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response && error.response.data.message) {
+        } else {
+          console.log("error");
+        }
+      });
     // Add form submission logic here
   };
 
@@ -84,26 +92,39 @@ export default function Login() {
           <Divider />
           <CardBody className="p-8">
             <div>
-              <Button type="button" className="w-72" startContent={<FaGoogle color="red" />}>
+              <Button
+                type="button"
+                className="w-72"
+                startContent={<FaGoogle color="red" />}
+              >
                 Continue with Google
               </Button>
               <br />
-              <Button type="button" className="w-72 my-3" startContent={<IoLogoOctocat color="orange" />}>
+              <Button
+                type="button"
+                className="w-72 my-3"
+                startContent={<IoLogoOctocat color="orange" />}
+              >
                 Continue with MetaMask
               </Button>
             </div>
             <div className="border-b border-gray-500 my-6 text-center font-bold">
               or
             </div>
-          <form onSubmit={onsubmitHandlerLogin}>  <Input
-              type="email"
-              value={data.email}
-              name="email"
-              onChange={onChangeHandler}
-              className="w-72 my-2"
-              label="Email"
-            />
-            <Button type="submit" color="success" className="w-72">Continue</Button></form>
+            <form onSubmit={onsubmitHandlerLogin}>
+              {" "}
+              <Input
+                type="email"
+                value={data.email}
+                name="email"
+                onChange={onChangeHandler}
+                className="w-72 my-2"
+                label="Email"
+              />
+              <Button type="submit" color="success" className="w-72">
+                Continue
+              </Button>
+            </form>
             <p>
               No account{" "}
               <button onClick={toggleCard} className="text-success-300 my-3">
@@ -125,11 +146,19 @@ export default function Login() {
           <Divider />
           <CardBody className="p-6">
             <div>
-              <Button type="button" className="w-72" startContent={<FaGoogle color="red" />}>
+              <Button
+                type="button"
+                className="w-72"
+                startContent={<FaGoogle color="red" />}
+              >
                 Continue with Google
               </Button>
               <br />
-              <Button type="button" className="w-72 my-1" startContent={<IoLogoOctocat color="orange" />}>
+              <Button
+                type="button"
+                className="w-72 my-1"
+                startContent={<IoLogoOctocat color="orange" />}
+              >
                 Continue with MetaMask
               </Button>
             </div>
@@ -153,13 +182,15 @@ export default function Login() {
                 className="w-72 mb-1"
                 label="Password"
               />
-              <Button type="submit" color="success" className="w-72">Continue</Button>
+              <Button type="submit" color="success" className="w-72">
+                Continue
+              </Button>
             </form>
             <p>
               No account{" "}
               <button onClick={toggleCard} className="text-success-300 my-3">
                 {" "}
-                Sign in
+                Log in
               </button>
             </p>
           </CardBody>
