@@ -1,12 +1,18 @@
-// import axios from "axios";
+'use client'
 import { Button } from "@nextui-org/button";
 import {Card, CardBody} from "@nextui-org/react";
 import { RiEmotionSadLine } from "react-icons/ri";
+import datewise from "./data/datewise";
 export default function Home() {
-	// const interceptor = axios.interceptors.request.use(async (config) => {
-	// 	config.headers["projectid"] = "ue7vjvd5u6er";
-	// 	return config;
-	//   });
+	
+	const daysData: React.FC = () => {
+		return (
+			<div>
+				<h1>kihvjhygufutcdktydcktckytdiytd</h1>
+			</div>
+		);
+	}
+
 	return (
 		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
 			
@@ -42,9 +48,9 @@ export default function Home() {
     </Card></div>
 			</div>
 			<Card className="mt-32 font-light">
-				<div className="flex bg-gray-200 gap-48"><Button className="w-32">Today</Button>
+				<div className="flex bg-gray-200 gap-48"><Button  className="w-32">Today</Button>
 				<Button className="w-32">This Week </Button>
-				<Button className="w-32"> This Month</Button></div>
+				<Button onClick={daysData} className="w-32"> This Month</Button></div>
 				<div className="flex m-8">
 					<p className="ml-5 mr-10">1</p>
 					<div className=" mr-10 text-2xl"><RiEmotionSadLine  /></div>
@@ -55,6 +61,7 @@ export default function Home() {
 					<div className=" mr-10 text-2xl"><RiEmotionSadLine  /></div>
 					<a className="text-black-500 font-semibold hover:underline" href="#">Neural Chat 7B v3.1</a>
 				</div>
+				<div></div>
 			</Card>
 		</section>
 

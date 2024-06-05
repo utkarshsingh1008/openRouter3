@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import { Card, CardHeader, CardBody, Divider, Button } from "@nextui-org/react";
+
 import { FaGoogle } from "react-icons/fa";
 import { IoLogoOctocat } from "react-icons/io";
 import { useAuthContext } from "../context/AuthContext";
@@ -23,6 +24,7 @@ export default function Login() {
   });
   const [token, setToken] = useState<number>();
   const router = useRouter();
+  
   const submitLogin = () => {
     axios
       .post("https://academics.newtonschool.co/api/v1/user/login", data, {
@@ -34,7 +36,6 @@ export default function Login() {
         console.log(responce.data.data);
         onTokenHandler(responce.data.token);
         router.push("/docs");
-        
       })
       .catch((error) => {
         console.log(error);
@@ -52,6 +53,7 @@ export default function Login() {
     event.preventDefault();
     submitLogin();
   };
+  
   const onsubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axios
@@ -62,7 +64,6 @@ export default function Login() {
       })
       .then((response) => {
         console.log(response);
-
         //  navigate("/login")
       })
       .catch((error) => {
@@ -82,10 +83,10 @@ export default function Login() {
   return (
     <>
       {showFirstCard ? (
-        <Card className="max-w-[1600px]">
+        <Card className="max-w-[1600px] mx-auto mt-10">
           <CardHeader>
             <div>
-              <p className="font-bold mr-24 text-2xl">Signup</p>
+              <p className="font-bold mr-24 text-2xl">Login</p>
               <p>continue with OpenRouter</p>
             </div>
           </CardHeader>
@@ -112,7 +113,6 @@ export default function Login() {
               or
             </div>
             <form onSubmit={onsubmitHandlerLogin}>
-              {" "}
               <Input
                 type="email"
                 value={data.email}
@@ -126,9 +126,9 @@ export default function Login() {
               </Button>
             </form>
             <p>
-              No account{" "}
+              No account{' '}
               <button onClick={toggleCard} className="text-success-300 my-3">
-                {" "}
+                {' '}
                 Sign in
               </button>
             </p>
@@ -136,7 +136,7 @@ export default function Login() {
           <Divider />
         </Card>
       ) : (
-        <Card className="max-w-[1600px]">
+        <Card className="max-w-[1600px] mx-auto mt-10">
           <CardHeader>
             <div>
               <p className="font-bold text-2xl">Create your account</p>
@@ -187,9 +187,9 @@ export default function Login() {
               </Button>
             </form>
             <p>
-              No account{" "}
+              No account{' '}
               <button onClick={toggleCard} className="text-success-300 my-3">
-                {" "}
+                {' '}
                 Log in
               </button>
             </p>

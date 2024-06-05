@@ -1,11 +1,16 @@
 import { title } from "@/components/primitives";
 import CardComponent from "./cardComponent";
+import Sidebar from "@/components/sidebar";
 
 
 export default function DocsPage() {
   return (
-    <div className="ml-4">
-      <h1 className={title()}>Docs</h1>
+    <div className="flex justify-between ">  
+      <div className="ml-16 fixed ">
+        <Sidebar />
+        </div> 
+        <div className="ml-96 text-center mb-4">
+      <h1 className={title()} >Docs</h1>
       <p className="m-4">
         The future will bring us hundreds of language models and dozens of
         providers for each. How will you choose the best?
@@ -26,6 +31,7 @@ export default function DocsPage() {
 	  <h1 className="mt-16 font-medium text-2xl ">Quick Sort</h1>
 	  <CardComponent/>
 	  <CardComponent/>  <CardComponent/>  <CardComponent/>
-	</div>
+	</div></div>
+ 
   );
 }
