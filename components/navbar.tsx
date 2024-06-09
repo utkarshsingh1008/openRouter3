@@ -8,24 +8,22 @@ import {
 	NavbarItem,
 	NavbarMenuItem,
 } from "@nextui-org/navbar";
-import Login from "@/app/login/page";
-import Modal from "@/app/login/modal";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
+import Login from "@/app/login/pages";
+import {Modal, ModalContent, Button, useDisclosure} from "@nextui-org/react";
 
+import { Link } from "@nextui-org/link";
 import { link as linkStyles } from "@nextui-org/theme";
-import { Button } from "@nextui-org/button";
 import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
-import { Fragment, useState } from "react";
 export const Navbar = () => {
+    
+	const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-  const [showModal, setShowModal] = useState(false)
 	return (
-		<Fragment><NextUINavbar maxWidth="xl" position="sticky">
+		<NextUINavbar maxWidth="xl" position="sticky">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
 				<NavbarBrand as="li" className="gap-3 max-w-fit">
 					<NextLink className="flex justify-start items-center" href="/">
@@ -73,10 +71,18 @@ export const Navbar = () => {
 						</NavbarItem>
 						
 					))}
-					<button className='text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
- font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5' onClick={()=>setShowModal(true)}>login Form</button>
-					<Modal isVisible={showModal} onClose={()=>setShowModal(false)}><Login/> </Modal>
+						<Button className="" onPress={onOpen}>Login</Button>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+        <Login/>
+</>
+          )}
+        </ModalContent>
+      </Modal>
 				</ul>
+			
 					<ThemeSwitch />
 				</NavbarItem>
 			
@@ -97,8 +103,8 @@ export const Navbar = () => {
 				
 				<div className="mx-4 mt-2 flex flex-col">
 					{siteConfig.navItems.map((item, index) => (
-						<NavbarMenuItem key={`${item}-${index}`}>
-							<Link
+						<NavbarItem key={item.href}>
+							<NextLink
 								color={
 									index === 2
 										? "primary"
@@ -106,16 +112,26 @@ export const Navbar = () => {
 										? "danger"
 										: "foreground"
 								}
-								href="#"
-								size="lg"
+								href={item.href}
+								
 							>
 								{item.label}
-							</Link>
-						</NavbarMenuItem>
+							</NextLink>
+
+						</NavbarItem>
 					))}
+						<Button className="" onPress={onOpen}>Login</Button>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+        <Login/>
+</>
+          )}
+        </ModalContent>
+      </Modal>
 				</div>
 			</NavbarMenu>
-		</NextUINavbar></Fragment>
-		
+		</NextUINavbar>
 	);
 };

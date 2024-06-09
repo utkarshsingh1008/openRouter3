@@ -5,11 +5,11 @@ import Sidebar from "@/components/sidebar";
 
 export default function DocsPage() {
   return (
-    <div className="flex justify-between ">  
+    <div className="flex   justify-between ">  
       <div className="ml-16 fixed ">
         <Sidebar />
         </div> 
-        <div className="ml-96 text-center mb-4">
+        <div className="lg:ml-96 text-center mb-4">
       <h1 className={title()} >Docs</h1>
       <p className="m-4">
         The future will bring us hundreds of language models and dozens of

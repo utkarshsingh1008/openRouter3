@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 function Sidebar() {
   return (
-    <div className="hidden md:block">
+    <div className="hidden lg:block">
       <ul className="mb-4">
         {siteConfig.navMenuItems.map((item) => (
           <div key={item.href} className="mb-2.5">

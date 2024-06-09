@@ -2,16 +2,9 @@
 import { Button } from "@nextui-org/button";
 import {Card, CardBody} from "@nextui-org/react";
 import { RiEmotionSadLine } from "react-icons/ri";
-import datewise from "./data/datewise";
 export default function Home() {
 	
-	const daysData: React.FC = () => {
-		return (
-			<div>
-				<h1>kihvjhygufutcdktydcktckytdiytd</h1>
-			</div>
-		);
-	}
+	
 
 	return (
 		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -27,9 +20,9 @@ export default function Home() {
 				Explore
 			</Button></div>
 			<Button className="mt-32 ">TRENDING MODELS..</Button>
-			<div className="flex  gap-6 w-3/5">
+			<div className="flex flex-col sm:flex-row gap-6 lg:w-4/6">
 				<div>  <Card>
-      <CardBody>
+      <CardBody className=" ">
 		<a className="text-black-500 font-semibold hover:underline" href="#">Phi-3 Medium Instruct</a>
         <p>Make beautiful websites regardless of your design experience.</p>
       </CardBody>
@@ -48,10 +41,10 @@ export default function Home() {
     </Card></div>
 			</div>
 			<Card className="mt-32 font-light">
-				<div className="flex bg-gray-200 gap-48"><Button  className="w-32">Today</Button>
-				<Button className="w-32">This Week </Button>
-				<Button onClick={daysData} className="w-32"> This Month</Button></div>
-				<div className="flex m-8">
+				<div className="flex flex-col sm:flex-row gap-1 bg-gray-200 lg:gap-48"><Button  className="w-64 mx-4 lg:w-32">Today</Button>
+				<Button className="w-64 mx-4 lg:w-32">This Week </Button>
+				<Button  className="w-64 mx-4 lg:w-32"> This Month</Button></div>
+				<div className="flex  m-8">
 					<p className="ml-5 mr-10">1</p>
 					<div className=" mr-10 text-2xl"><RiEmotionSadLine  /></div>
 					<a className="text-black-500 font-semibold hover:underline" href="#">Neural Chat 7B v3.1</a>
@@ -61,7 +54,7 @@ export default function Home() {
 					<div className=" mr-10 text-2xl"><RiEmotionSadLine  /></div>
 					<a className="text-black-500 font-semibold hover:underline" href="#">Neural Chat 7B v3.1</a>
 				</div>
-				<div></div>
+				
 			</Card>
 		</section>
 

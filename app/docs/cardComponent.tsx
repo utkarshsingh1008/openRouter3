@@ -4,7 +4,7 @@ function CardComponent() {
   return (
     <div>
         <div className="mt-8">
-	  <div className="flex justify-between">   <div className="flex gap-2">
+	  <div className="flex justify-between">   <div className="flex lg:gap-2">
 	 <button className="bg-white hover:bg-gray-200 text-gray-600 font-semibold  px-1 border border-gray-400 rounded shadow">
   typescript
 </button>
@@ -25,7 +25,7 @@ copy
   radius="lg"
   className="border-none"
 >
-  <p className="p-4 text-black">" ddc,akcnlvkmw;vmw;elmw;ef,;el,q;eflm;efwmekwmmwkmwlkmm"</p>
+  <p className="p-4 text-black ">" "</p>
 
 </Card>
 
