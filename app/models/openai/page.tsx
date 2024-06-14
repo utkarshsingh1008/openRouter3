@@ -1,11 +1,11 @@
 import React from 'react'
 
-function wickly() {
+function OpenAi() {
   return (
     <div>
-      
+      OpenAi
     </div>
   )
 }
 
-export default wickly
+export default OpenAi

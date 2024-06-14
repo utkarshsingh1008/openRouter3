@@ -10,6 +10,7 @@ import {
 } from "@nextui-org/navbar";
 import Login from "@/app/login/pages";
 import {Modal, ModalContent, Button, useDisclosure} from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
 
 import { Link } from "@nextui-org/link";
 import { link as linkStyles } from "@nextui-org/theme";
@@ -18,6 +19,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
+import Loginham from "@/app/login/Loginham";
 export const Navbar = () => {
     
 	const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -31,23 +33,7 @@ export const Navbar = () => {
 						<p className="font-bold text-inherit ml-4">OpenRouter</p>
 					</NextLink>
 				</NavbarBrand>
-				<ul className="hidden lg:flex justify-start ml-14">
-					{siteConfig.navItemChat.map((item) => (
-						<NavbarItem key={item.href}>
-							<NextLink
-								className={clsx(
-									linkStyles({ color: "foreground" }),
-									"data-[active=true]:text-primary data-[active=true]:font-medium"
-								)}
-								color="foreground"
-								href={item.href}
-							>
-								{item.label}
-							</NextLink>
-							
-						</NavbarItem>
-					))}
-				</ul>
+				
 			</NavbarContent>
 
 			<NavbarContent
@@ -71,7 +57,7 @@ export const Navbar = () => {
 						</NavbarItem>
 						
 					))}
-						<Button className="" onPress={onOpen}>Login</Button>
+						<Button  className="-mt-2 text-medium mr-6 " onPress={onOpen}>Sign in</Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
@@ -81,9 +67,37 @@ export const Navbar = () => {
           )}
         </ModalContent>
       </Modal>
+	  <Dropdown>
+      <DropdownTrigger>
+        <Button 
+          variant="bordered" 
+        >
+          Open Menu
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu aria-label="Static Actions">
+        <DropdownItem key="new">New file</DropdownItem>
+        <DropdownItem key="copy">Copy link</DropdownItem>
+        <DropdownItem key="edit">Edit file</DropdownItem>
+        <DropdownItem key="delete" className="text-danger" color="danger">
+          Delete file
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+	 
 				</ul>
 			
 					<ThemeSwitch />
+					{/* <Button onPress={onOpen}>S</Button>
+                 <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+               <ModalContent>
+          {(onClose) => (
+            <>
+        <Loginham/>
+</>
+          )}
+        </ModalContent>
+      </Modal> */}
 				</NavbarItem>
 			
 				<NavbarItem className="hidden md:flex">
@@ -105,13 +119,13 @@ export const Navbar = () => {
 					{siteConfig.navItems.map((item, index) => (
 						<NavbarItem key={item.href}>
 							<NextLink
-								color={
-									index === 2
-										? "primary"
-										: index === siteConfig.navMenuItems.length - 1
-										? "danger"
-										: "foreground"
-								}
+								// color={
+								// 	index === 2
+								// 		? "primary"
+								// 		: index === siteConfig.navItems.length - 1
+								// 		? "danger"
+								// 		: "foreground"
+								// }
 								href={item.href}
 								
 							>
@@ -119,10 +133,11 @@ export const Navbar = () => {
 							</NextLink>
 
 						</NavbarItem>
+						
 					))}
-						<Button className="" onPress={onOpen}>Login</Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent>
+						<Button onPress={onOpen}>Sign in</Button>
+                 <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+               <ModalContent>
           {(onClose) => (
             <>
         <Login/>
@@ -130,6 +145,23 @@ export const Navbar = () => {
           )}
         </ModalContent>
       </Modal>
+	  <Dropdown>
+      <DropdownTrigger>
+        <Button 
+          variant="bordered" 
+        >
+          Open Menu
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu aria-label="Static Actions">
+        <DropdownItem key="new">New file</DropdownItem>
+        <DropdownItem key="copy">Copy link</DropdownItem>
+        <DropdownItem key="edit">Edit file</DropdownItem>
+        <DropdownItem key="delete" className="text-danger" color="danger">
+          Delete file
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
 				</div>
 			</NavbarMenu>
 		</NextUINavbar>
