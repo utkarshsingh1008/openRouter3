@@ -40,7 +40,7 @@ export default function Home() {
 			<div className="flex flex-col sm:flex-row gap-6 lg:w-4/6">
 				<div>  <Card>
       <CardBody className=" ">
-		<a className="text-black-500 font-semibold hover:underline" href="#">Phi-3 Medium Instruct</a>
+		<a className="text-black-500 font-semibold hover:underline" href="/models/openai/gpt-3.5-turbo-0301">Phi-3 Medium Instruct</a>
         <p>Make beautiful websites regardless of your design experience.</p>
       </CardBody>
     </Card></div>

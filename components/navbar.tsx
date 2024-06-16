@@ -19,7 +19,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
-import Loginham from "@/app/login/Loginham";
+
 export const Navbar = () => {
     
 	const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -76,12 +76,11 @@ export const Navbar = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
-        <DropdownItem key="new">New file</DropdownItem>
-        <DropdownItem key="copy">Copy link</DropdownItem>
-        <DropdownItem key="edit">Edit file</DropdownItem>
-        <DropdownItem key="delete" className="text-danger" color="danger">
-          Delete file
-        </DropdownItem>
+        <DropdownItem key="new">Credits</DropdownItem>
+        <DropdownItem key="copy">Keys</DropdownItem>
+        <DropdownItem key="edit">Activity</DropdownItem>
+        <DropdownItem key="delete" > Setting </DropdownItem>
+		<DropdownItem key="edit">Sign out</DropdownItem>
       </DropdownMenu>
     </Dropdown>
 	 
@@ -154,12 +153,11 @@ export const Navbar = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
-        <DropdownItem key="new">New file</DropdownItem>
-        <DropdownItem key="copy">Copy link</DropdownItem>
-        <DropdownItem key="edit">Edit file</DropdownItem>
-        <DropdownItem key="delete" className="text-danger" color="danger">
-          Delete file
-        </DropdownItem>
+	  <DropdownItem key="new">Credits</DropdownItem>
+        <DropdownItem key="copy">Keys</DropdownItem>
+        <DropdownItem key="edit">Activity</DropdownItem>
+        <DropdownItem key="delete" > Setting </DropdownItem>
+		<DropdownItem key="edit">Sign out</DropdownItem>
       </DropdownMenu>
     </Dropdown>
 				</div>

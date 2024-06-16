@@ -6,7 +6,7 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import clsx from "clsx";
 import Sidebar from "@/components/sidebar";
-import axios from "axios";
+import Footer from "@/components/footer";
 import AuthContextProvider from "./context/AuthContext"
 export const metadata: Metadata = {
 	
@@ -52,9 +52,11 @@ export default function RootLayout({
 						<main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
 							{children}
 						</main>
-						<footer className="w-full flex items-center justify-center py-3">
-						
+						<footer className="w-full py-6">
+							<div className="my-10 mx-48 border-t-1 border-gray-300"></div>
+						<Footer />
 						</footer>
+						
 					</div>
 				</Providers></AuthContextProvider>
 			</body>
