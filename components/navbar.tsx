@@ -80,7 +80,7 @@ export const Navbar = () => {
         <DropdownItem key="copy">Keys</DropdownItem>
         <DropdownItem key="edit">Activity</DropdownItem>
         <DropdownItem key="delete" > Setting </DropdownItem>
-		<DropdownItem key="edit">Sign out</DropdownItem>
+		<DropdownItem key="edit">Sign </DropdownItem>
       </DropdownMenu>
     </Dropdown>
 	 
