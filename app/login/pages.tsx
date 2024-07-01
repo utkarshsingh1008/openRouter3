@@ -8,7 +8,7 @@ import { IoLogoOctocat } from "react-icons/io";
 import { useAuthContext } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Modal from "./modal";
+
 interface FormData {
   [key: string]: string;
 }

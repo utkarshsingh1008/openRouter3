@@ -11,7 +11,7 @@ import {
 import Login from "@/app/login/pages";
 import {Modal, ModalContent, Button, useDisclosure} from "@nextui-org/react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
-
+import { useRouter } from "next/navigation";
 import { Link } from "@nextui-org/link";
 import { link as linkStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
@@ -20,9 +20,14 @@ import clsx from "clsx";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
 
+
 export const Navbar = () => {
     
 	const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const router = useRouter();
+	const dropDownHandler = (url:string)=>{
+		router.push(url)
+	}
 
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
@@ -76,11 +81,11 @@ export const Navbar = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
-        <DropdownItem key="new">Credits</DropdownItem>
-        <DropdownItem key="copy">Keys</DropdownItem>
-        <DropdownItem key="edit">Activity</DropdownItem>
-        <DropdownItem key="delete" > Setting </DropdownItem>
-		<DropdownItem key="edit">Sign </DropdownItem>
+        <DropdownItem onClick={() => dropDownHandler('/credits')}  key="new">Credits</DropdownItem>
+        <DropdownItem  onClick={() => dropDownHandler('/keys')} key="copy">Keys</DropdownItem>
+        <DropdownItem onClick={() => dropDownHandler('/activity')} key="edit">Activity</DropdownItem>
+        <DropdownItem onClick={() => dropDownHandler('setting')} key="delete" > Setting </DropdownItem>
+		<DropdownItem onClick={() => dropDownHandler('/')} key="edit">Sign out</DropdownItem>
       </DropdownMenu>
     </Dropdown>
 	 
@@ -153,11 +158,11 @@ export const Navbar = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
-	  <DropdownItem key="new">Credits</DropdownItem>
-        <DropdownItem key="copy">Keys</DropdownItem>
-        <DropdownItem key="edit">Activity</DropdownItem>
-        <DropdownItem key="delete" > Setting </DropdownItem>
-		<DropdownItem key="edit">Sign out</DropdownItem>
+	  <DropdownItem onClick={() => dropDownHandler('/credits')}  key="new">Credits</DropdownItem>
+        <DropdownItem  onClick={() => dropDownHandler('/keys')} key="copy">Keys</DropdownItem>
+        <DropdownItem onClick={() => dropDownHandler('/activity')} key="edit">Activity</DropdownItem>
+        <DropdownItem onClick={() => dropDownHandler('setting')} key="delete" > Setting </DropdownItem>
+		<DropdownItem onClick={() => dropDownHandler('/')} key="edit">Sign out</DropdownItem>
       </DropdownMenu>
     </Dropdown>
 				</div>
